@@ -23,27 +23,18 @@
     </div>
   </template>
   
-  <script>
+ <script>
   export default {
     data() {
       return {
-        user: {} // Objeto para almacenar los datos del usuario
+        user: {}, // Objeto para almacenar los datos del usuario
+        userData: '' // String para almacenar los datos del usuario en formato JSON
       };
     },
     mounted() {
       // Cuando el componente se monta, asignamos los datos del usuario
-      this.user = {
-        given_name: "Carlos Eduardo",
-        family_name: "López Piña",
-        nickname: "20213tn070",
-        name: "Carlos Eduardo López Piña",
-        picture: "https://lh3.googleusercontent.com/a/ACg8ocK1wiW2GViBwr9CN6m_7_hTeu_Y8ERBkUdOT6FvTw0JHJqYcMPp=s96-c",
-        locale: "es",
-        updated_at: "2024-04-18T23:29:05.734Z",
-        email: "20213tn070@utez.edu.mx",
-        email_verified: true,
-        sub: "google-oauth2|106737134679895823484"
-      };
+      this.user = this.$auth.user;
+      this.userData = JSON.stringify(this.$auth.user, null, 2);
     }
   };
   </script>
